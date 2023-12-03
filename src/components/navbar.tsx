@@ -15,7 +15,7 @@ export default function MainNavbar() {
         <NavbarBrand href="/">
           <ModeToggle />
           <span className="ml-1 self-center whitespace-nowrap text-2xl tracking-wide font-semibold">
-            Toker's todo
+            Toker todos
           </span>
         </NavbarBrand>
         <div className="flex md:order-2">
