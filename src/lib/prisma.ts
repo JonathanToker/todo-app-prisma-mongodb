@@ -45,6 +45,7 @@ export const AddTodo = async (title: string, description: string) => {
 };
 
 export const RemoveTodo = async (id: string) => {
+  noStore();
   await prisma.todo.delete({
     where: {
       id,
