@@ -25,13 +25,7 @@ if (process.env.NODE_ENV === "production") {
 
 export const ReadAllTodos = async () => {
   noStore();
-  const allTodos = await prisma.todo.findMany({
-    orderBy: {
-      title: "asc",
-      description: "asc",
-      time: "asc",
-    },
-  });
+  const allTodos = await prisma.todo.findMany();
   if (allTodos) {
     return allTodos as TodoType[];
   } else {
@@ -46,6 +40,31 @@ export const AddTodo = async (title: string, description: string) => {
       title,
       description,
       time: new Date(),
+    },
+  });
+};
+
+export const RemoveTodo = async (id: string) => {
+  await prisma.todo.delete({
+    where: {
+      id,
+    },
+  });
+};
+
+export const UpdateTodo = async function (
+  id: string,
+  title: string,
+  description: string
+) {
+  noStore();
+  await prisma.todo.update({
+    where: {
+      id,
+    },
+    data: {
+      title,
+      description,
     },
   });
 };
